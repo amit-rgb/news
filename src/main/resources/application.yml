@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: news
+  thymeleaf:
+    cache: false
+  servlet:
+    multipart:
+      max-file-size: 15MB
+      max-request-size: 30MB
+server:
+  port: 8080
+news:
+  brand: "भीमनगर टाइम्स"
+  tagline: "सबकी नजर, सबकी खबर"
+  location: "भीमनगर | उत्तर प्रदेश"
+  slogan: "निष्पक्ष, निर्भीक, जनहित में समर्पित"
+  upload-dir: "${NEWS_UPLOAD_DIR:./data/uploads}"
+ai:
+  enabled: "${AI_ENABLED:false}"
+  base-url: "${AI_BASE_URL:https://api.openai.com/v1}"
+  api-key: "${AI_API_KEY:}"
+  model: "${AI_MODEL:gpt-4o-mini}"
