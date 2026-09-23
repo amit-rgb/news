@@ -55,3 +55,19 @@ The HTML/CSS template is intentionally used instead of generating the entire new
 
 ## Production notes
 Before publication, verify names, dates, numbers, quotations and official claims against primary sources. Configure HTTPS/reverse proxy and persistent storage for uploaded images in production.
+
+
+## Optional AI copy desk
+
+The application works without an AI provider. To enable the OpenAI-compatible copy desk, set environment variables:
+
+    AI_ENABLED=true
+    AI_API_KEY=your_api_key
+    AI_BASE_URL=https://api.openai.com/v1
+    AI_MODEL=gpt-4o-mini
+
+For another OpenAI-compatible provider, change AI_BASE_URL and AI_MODEL. If the AI call fails, the application automatically falls back to the deterministic local formatter instead of blocking publication.
+
+## Editorial safety
+
+AI output is treated as a drafting aid, not as a source of truth. Review every generated article before publication, especially names, dates, figures, quotations and claims about government action.
