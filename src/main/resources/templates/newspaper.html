@@ -33,12 +33,12 @@
   <main>
     <div class="section-label" th:text="${article.section}">स्वास्थ्य</div>
     <section class="headline-block">
-      <h1 th:text="${article.headline}">उत्तर प्रदेश में राज्यसभा की</h1>
-      <h2 th:if="${article.subheadline != null and !#strings.isEmpty(article.subheadline)}" th:text="${article.subheadline}">10 सीटों पर चुनाव का ऐलान: 16 अक्टूबर को होगा मतदान</h2>
+      <h1 th:classappend="${#strings.length(article.headline) > 95 ? ' headline-xlong' : (#strings.length(article.headline) > 72 ? ' headline-long' : '')}" th:text="${article.headline}">उत्तर प्रदेश में राज्यसभा की</h1>
+      <h2 th:if="${article.subheadline != null and !#strings.isEmpty(article.subheadline)}" th:classappend="${#strings.length(article.subheadline) > 120 ? ' sub-xlong' : (#strings.length(article.subheadline) > 95 ? ' sub-long' : '')}" th:text="${article.subheadline}">10 सीटों पर चुनाव का ऐलान: 16 अक्टूबर को होगा मतदान</h2>
     </section>
     <div class="strap" th:text="${article.strapline}">मुख्य घटनाक्रम, संबंधित पक्षों की प्रतिक्रिया और आगे की प्रक्रिया पर नजर</div>
-    <section class="lead-area">
-      <article class="story-copy">
+    <section class="lead-area" th:classappend="${article.mainImage == null ? ' no-image' : ''}">
+      <article th:classappend="${#strings.length(article.body) > 1100 ? ' body-tight' : (#strings.length(article.body) > 850 ? ' body-compact' : '')}" class="story-copy">
         <p class="dateline" th:text="${article.dateline}">भीमनगर, 22 सितंबर 2026 |</p>
         <div th:each="paragraph : ${#strings.arraySplit(article.body, '\n\n')}"><p th:text="${paragraph}"></p></div>
       </article>
@@ -47,7 +47,7 @@
         <figcaption>मुख्य समाचार तस्वीर</figcaption>
       </figure>
       <div class="hero-placeholder" th:if="${article.mainImage == null}">
-        <div>मुख्य समाचार फोटो</div><small>यहाँ मुख्य फोटो दिखाई देगी</small>
+        <div><strong>मुख्य समाचार फोटो</strong><br><small>फोटो उपलब्ध होने पर यहां दिखाई जाएगी</small></div>
       </div>
     </section>
     <section class="analysis-box" th:if="${(article.secondaryHeading != null and !#strings.isEmpty(article.secondaryHeading)) or (article.secondaryBody != null and !#strings.isEmpty(article.secondaryBody))}">
