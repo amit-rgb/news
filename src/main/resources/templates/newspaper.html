@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title th:text="\${article.headline + ' — ' + brand}">भीमनगर टाइम्स</title>
+  <title th:text="${article.headline + ' — ' + brand}">भीमनगर टाइम्स</title>
   <link rel="stylesheet" th:href="@{/css/newspaper.css}">
 </head>
 <body>
@@ -17,8 +17,8 @@
   <header class="masthead">
     <div class="logo-circle"><span>bn</span><small>bheemnagartimes</small></div>
     <div class="masthead-center">
-      <div class="masthead-top" th:text="\${tagline}">सबसे नजर, सबकी खबर</div>
-      <div class="brand" th:text="\${brand}">भीमनगर टाइम्स</div>
+      <div class="masthead-top" th:text="${tagline}">सबसे नजर, सबकी खबर</div>
+      <div class="brand" th:text="${brand}">भीमनगर टाइम्स</div>
     </div>
     <div class="masthead-right">
       <b>स्थानीय समाचार</b><span>सशक्त समाज</span><span>हमारा संकल्प</span>
@@ -26,39 +26,39 @@
   </header>
   <div class="meta-row">
     <span>RNI No.: DELHIN/2012/44428</span>
-    <span th:text="\${location}">भीमनगर | उत्तर प्रदेश</span>
-    <span th:text="\${slogan}">निष्पक्ष, निर्भीक, जनहित में समर्पित</span>
+    <span th:text="${location}">भीमनगर | उत्तर प्रदेश</span>
+    <span th:text="${slogan}">निष्पक्ष, निर्भीक, जनहित में समर्पित</span>
     <span>पृष्ठ 1</span>
   </div>
   <main>
-    <div class="section-label" th:text="\${article.section}">स्वास्थ्य</div>
+    <div class="section-label" th:text="${article.section}">स्वास्थ्य</div>
     <section class="headline-block">
-      <h1 th:text="\${article.headline}">उत्तर प्रदेश में राज्यसभा की</h1>
-      <h2 th:if="\${article.subheadline != null and !#strings.isEmpty(article.subheadline)}" th:text="\${article.subheadline}">10 सीटों पर चुनाव का ऐलान: 16 अक्टूबर को होगा मतदान</h2>
+      <h1 th:text="${article.headline}">उत्तर प्रदेश में राज्यसभा की</h1>
+      <h2 th:if="${article.subheadline != null and !#strings.isEmpty(article.subheadline)}" th:text="${article.subheadline}">10 सीटों पर चुनाव का ऐलान: 16 अक्टूबर को होगा मतदान</h2>
     </section>
-    <div class="strap" th:text="\${article.strapline}">मुख्य घटनाक्रम, संबंधित पक्षों की प्रतिक्रिया और आगे की प्रक्रिया पर नजर</div>
+    <div class="strap" th:text="${article.strapline}">मुख्य घटनाक्रम, संबंधित पक्षों की प्रतिक्रिया और आगे की प्रक्रिया पर नजर</div>
     <section class="lead-area">
       <article class="story-copy">
-        <p class="dateline" th:text="\${article.dateline}">भीमनगर, 22 सितंबर 2026 |</p>
-        <div th:each="paragraph : \${#strings.arraySplit(article.body, '\\n\\n')}"><p th:text="\${paragraph}"></p></div>
+        <p class="dateline" th:text="${article.dateline}">भीमनगर, 22 सितंबर 2026 |</p>
+        <div th:each="paragraph : ${#strings.arraySplit(article.body, '\n\n')}"><p th:text="${paragraph}"></p></div>
       </article>
-      <figure class="hero-image" th:if="\${article.mainImage != null}">
-        <img th:src="\${article.mainImage}" alt="समाचार की मुख्य तस्वीर">
+      <figure class="hero-image" th:if="${article.mainImage != null}">
+        <img th:src="${article.mainImage}" alt="समाचार की मुख्य तस्वीर">
         <figcaption>मुख्य समाचार तस्वीर</figcaption>
       </figure>
-      <div class="hero-placeholder" th:if="\${article.mainImage == null}">
+      <div class="hero-placeholder" th:if="${article.mainImage == null}">
         <div>मुख्य समाचार फोटो</div><small>यहाँ मुख्य फोटो दिखाई देगी</small>
       </div>
     </section>
-    <section class="analysis-box" th:if="\${(article.secondaryHeading != null and !#strings.isEmpty(article.secondaryHeading)) or (article.secondaryBody != null and !#strings.isEmpty(article.secondaryBody))}">
-      <h3 th:text="\${article.secondaryHeading}">आगे की प्रक्रिया पर सबकी नजर</h3>
-      <p th:text="\${article.secondaryBody}">उपलब्ध जानकारी के अनुसार संबंधित पक्ष और विभाग आगे की प्रक्रिया पर काम कर रहे हैं।</p>
+    <section class="analysis-box" th:if="${(article.secondaryHeading != null and !#strings.isEmpty(article.secondaryHeading)) or (article.secondaryBody != null and !#strings.isEmpty(article.secondaryBody))}">
+      <h3 th:text="${article.secondaryHeading}">आगे की प्रक्रिया पर सबकी नजर</h3>
+      <p th:text="${article.secondaryBody}">उपलब्ध जानकारी के अनुसार संबंधित पक्ष और विभाग आगे की प्रक्रिया पर काम कर रहे हैं।</p>
     </section>
-    <section class="quote-box" th:if="\${article.quote != null and !#strings.isEmpty(article.quote)}">
+    <section class="quote-box" th:if="${article.quote != null and !#strings.isEmpty(article.quote)}">
       <span class="quote-mark">“</span>
       <div>
-        <p th:text="\${article.quote}">समाचार से जुड़ी महत्वपूर्ण प्रतिक्रिया।</p>
-        <strong th:if="\${article.quoteAttribution != null and !#strings.isEmpty(article.quoteAttribution)}" th:text="\${'— ' + article.quoteAttribution}">— संबंधित पक्ष</strong>
+        <p th:text="${article.quote}">समाचार से जुड़ी महत्वपूर्ण प्रतिक्रिया।</p>
+        <strong th:if="${article.quoteAttribution != null and !#strings.isEmpty(article.quoteAttribution)}" th:text="${'— ' + article.quoteAttribution}">— संबंधित पक्ष</strong>
       </div>
     </section>
   </main>
