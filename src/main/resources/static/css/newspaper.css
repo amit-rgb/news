@@ -3,7 +3,7 @@
   --blue:#dceefa;--blue-ink:#164f7b;--green:#176b37;
 }
 *{box-sizing:border-box}html,body{margin:0;padding:0}
-body{background:#d7d7d7;color:var(--ink);font-family:"Noto Devanagari","Noto Sans Devanagari",Arial,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{background:#d7d7d7;color:var(--ink);font-family:"NotoDevanagari","Noto Devanagari","Noto Sans Devanagari",Arial,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .toolbar{position:sticky;top:0;z-index:20;background:#202020;padding:8px;display:flex;justify-content:center;gap:8px}
 .tool-btn{color:#fff;background:#414141;border:1px solid #666;text-decoration:none;padding:7px 13px;border-radius:4px;font-family:inherit;font-size:14px;cursor:pointer}
 .tool-btn.primary{background:var(--red);border-color:var(--red)}
