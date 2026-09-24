@@ -35,14 +35,12 @@ public class PdfService {
 
         String html = engine.process("newspaper", c);
 
-        // Inline the exact newspaper stylesheet so browser and PDF share the
-        // same A4 layout. This avoids relying on an HTTP CSS request.
         ClassPathResource cssResource = new ClassPathResource("static/css/newspaper.css");
         String css;
         try (InputStream in = cssResource.getInputStream()) {
             css = new String(in.readAllBytes(), StandardCharsets.UTF_8);
         }
-        html = html.replaceFirst("(?s)<link\\\\s+rel=[\\\"']stylesheet[\\\"'][^>]*>",
+        html = html.replaceFirst("(?s)<link\\s+rel=[\"']stylesheet[\"'][^>]*>",
                 "<style>" + css + "</style>");
 
         if (a.getMainImage() != null && a.getMainImage().startsWith("/uploads/")) {
